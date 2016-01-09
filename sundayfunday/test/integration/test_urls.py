@@ -3,6 +3,7 @@ import httplib
 from django import test
 
 from sundayfunday import models
+from sundayfunday.forms.register import RegisterUserForm
 
 class TestIndex(test.TestCase):
 
@@ -49,7 +50,56 @@ class TestLoginLogout(test.TestCase):
         self.assertEqual(response.status_code, httplib.OK)
         self.assertFalse(response.context['user'].is_authenticated())
 
+    def tearDown(self):
+        self.user.delete()
 
+class TestRegistration(test.TestCase):
 
+    def setUp(self):
+        self.c = test.Client()
+
+    def test_succesful_register(self):
+        response = self.c.post('/register/', {'username': 'user',
+                                 'first_name': 'first_name',
+                                 'last_name': 'last_name',
+                                 'email': 'email@server.com',
+                                 'password1': 'Pass1worder',
+                                 'password2': 'Pass1worder'}, follow=True)
+        self.assertEqual(response.status_code, httplib.OK)
+        self.assertEqual(1, models.User.objects.all().count())
+        self.assertEqual('user', models.User.objects.all()[0].username)
+        models.User.objects.all().delete()
+
+    def test_bad_register(self):
+        response = self.c.post('/register/', {'username': 'user',
+                                 'first_name': 'first_name',
+                                 'last_name': 'last_name',
+                                 'email': 'email@server.com',
+                                 'password1': 'password',
+                                 'password2': 'password'}, follow=True)
+        self.assertEqual(response.status_code, httplib.OK)
+        self.assertEqual(0, models.User.objects.all().count())
+
+    def test_duplicate_user_register(self):
+        response = self.c.post('/register/', {'username': 'user',
+                                 'first_name': 'first_name',
+                                 'last_name': 'last_name',
+                                 'email': 'email@server.com',
+                                 'password1': 'Pass1worder',
+                                 'password2': 'Pass1worder'}, follow=True)
+        self.assertEqual(response.status_code, httplib.OK)
+        self.assertEqual(1, models.User.objects.all().count())
+        self.assertEqual('user', models.User.objects.all()[0].username)
+
+        response = self.c.post('/register/', {'username': 'user',
+                                 'first_name': 'first_name',
+                                 'last_name': 'last_name',
+                                 'email': 'email@server.com',
+                                 'password1': 'Pass1worder',
+                                 'password2': 'Pass1worder'}, follow=True)
+        self.assertEqual(response.status_code, httplib.OK)
+        self.assertEqual(1, models.User.objects.all().count())
+        self.assertEqual('user', models.User.objects.all()[0].username)
+        models.User.objects.all().delete()
 
 
