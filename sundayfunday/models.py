@@ -13,6 +13,7 @@ class User(auth_models.AbstractUser):
     )
 
     user_type = models.IntegerField(choices=TYPES, default=USER)
+    preferences = models.ManyToManyField('Preferences', blank=True) 
 
     @property
     def name(self):
@@ -26,3 +27,15 @@ class Event(models.Model):
     title = models.CharField(max_length=20)
     description = models.CharField(max_length=1000)
     owner = models.ForeignKey('User')
+    preferences = models.ManyToManyField('Preferences', blank=True)
+
+    def __str__(self):
+        return self.title
+
+class Preferences(models.Model):
+    """ default preferences"""
+
+    name = models.CharField(max_length=30)
+ 
+    def __str__(self):
+        return self.name
