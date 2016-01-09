@@ -1,9 +1,23 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <form method="POST" action="">
+<div class="content">
+    <form class="form-horizontal" method="POST" action="">
         {% csrf_token %}
-        {{form}}
-        <input class="btn" type="submit">
+        {% for field in form %}
+            <div class="form-group {% if field.errors %} has-error {% endif %} ">
+                <label class="col-sm-5 control-label"> {{field.label}} </label>
+                <div class="col-xs-5">
+                    {{field}}
+                    {% for error in field.errors %}
+                        <span class="help-block">
+                            {{error}}
+                        </span>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+        <input class="btn btn-default btn-lg" type="submit">
     </form>
+</div>
 {% endblock %}
