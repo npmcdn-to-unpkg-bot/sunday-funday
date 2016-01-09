@@ -50,3 +50,31 @@ class Comment(models.Model):
 
     def __str__(self):
         return "%s" % self.id
+
+class Grade(models.Model):
+    """ event grading"""
+
+    user = models.ForeignKey('User')
+    event = models.ForeignKey('Event')
+
+    TYPES = (
+        (1, "POOR"),
+        (2, "FAIR"),
+        (3, "AVERAGE"),
+        (4, "GOOD"),
+        (5, "EXCELLENT"),
+    )
+    grade = models.IntegerField(choices=TYPES, default=5)
+
+    def __str__(self):
+        return "%s" % self.id
+
+class Friend(models.Model):
+    """ friending"""
+
+    first_person = models.ForeignKey('User', related_name='person1')
+    second_person = models.ForeignKey('User', related_name='person2')
+    date = models.DateTimeField()
+
+    def __str__(self):
+        return "%s" % self.id
