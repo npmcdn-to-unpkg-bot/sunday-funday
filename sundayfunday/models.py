@@ -3,9 +3,12 @@ from django.db import models
 
 class User(auth_models.User):
     """User that can login/logout + his type."""
+    USER = 1
+    ORGANISER = 2
+
     TYPES = (
-        (1, 'USER'),
-        (2, 'ORGANISER'),
+        (USER, 'USER'),
+        (ORGANISER, 'ORGANISER'),
         # TODO Add Admin if needed
     )
 
