@@ -1,5 +1,4 @@
 from django import test
-from django import db
 
 from sundayfunday import models
 
@@ -20,11 +19,12 @@ class EventTestCase(test.TestCase):
 
 class UserTestCase(test.TestCase):
 
-    def test_type_required(self):
+    def test_type_is_user(self):
         u = models.User(
                 first_name='gigi',
                 last_name='becali')
-        self.assertRaises(db.IntegrityError, u.save)
+        u.save()
+        self.assertEqual(u.user_type, models.User.USER)
 
     def test_name(self):
         u = models.User(
