@@ -20,6 +20,7 @@ from sundayfunday.views import index
 from sundayfunday.views import user
 from sundayfunday.views import register
 from sundayfunday.views import addevent
+from sundayfunday.views import event
 
 #admin.autodiscover()
 
@@ -30,4 +31,6 @@ urlpatterns = [
     url(r'^register/', register.RegisterUserView.as_view(), name='register'),
     url(r'^addevent/', addevent.AddEventView.as_view(), name='addevent'),
     url(r'^admin/', admin.site.urls),
+    url(r'^event/(?P<pk>[0-9]+)/$', event.EventDetailView.as_view(),
+        name='event-detail'),
 ]
