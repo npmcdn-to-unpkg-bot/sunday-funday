@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="content">
+  {% if error %}
+  <div class="alert alert-danger">
+    <p><strong>{{error}}</strong></p>
+  </div>
+  {% endif %}
+  <form method="post" class="form-horizontal" role="form">{% csrf_token %}
+    <legend><span class="col-sm-offset-1">Log In</span></legend>
+    <div class="form-group">
+      <label for="username" class="col-sm-2 control-label">Username</label>
+      <div class="col-sm-10 ">
+        <input class="form-control input-lg" name="username"></input>
+      </div>
+      <label for="username" class="col-sm-2 control-label">Password</label>
+      <div class="col-sm-10 ">
+        <input class="form-control input-lg" name="password" type="password"></input>
+      </div>
+    </div>
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Log In</button>
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock %}

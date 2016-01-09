@@ -14,6 +14,11 @@ class User(auth_models.User):
 
     user_type = models.IntegerField(choices=TYPES)
 
+    @property
+    def name(self):
+        return ' '.join([self.first_name.capitalize(),
+                         self.last_name.capitalize()])
+
 
 class Event(models.Model):
     """Event in our DB."""

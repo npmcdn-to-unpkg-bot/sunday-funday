@@ -25,3 +25,11 @@ class UserTestCase(test.TestCase):
                 first_name='gigi',
                 last_name='becali')
         self.assertRaises(db.IntegrityError, u.save)
+
+    def test_name(self):
+        u = models.User(
+                first_name='gigi',
+                last_name='becali',
+                user_type=models.User.USER)
+        self.assertEqual(u.name, 'Gigi Becali')
+

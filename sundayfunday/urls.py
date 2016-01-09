@@ -17,10 +17,13 @@ from django.conf.urls import url
 from django.contrib import admin
 
 from sundayfunday.views import index
+from sundayfunday.views import user
 
 #admin.autodiscover()
 
 urlpatterns = [
     url(r'^$', index.IndexView.as_view()),
+    url(r'^login/$', user.LoginView.as_view()),
+    url(r'^logout/$', user.LogoutView.as_view()),
     url(r'^admin/', admin.site.urls),
 ]
