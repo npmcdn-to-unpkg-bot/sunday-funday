@@ -4,4 +4,5 @@ from sundayfunday import models
 
 admin.site.register(models.User)
 admin.site.register(models.Event)
-admin.site.register(models.Preferences)
+admin.site.register(models.Preference)
+admin.site.register(models.Comment)
