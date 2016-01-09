@@ -1,5 +1,6 @@
 # sunday-funday
 SVV Project
+[![Build Status](https://travis-ci.org/mihaibivol/sunday-funday.svg)](https://travis-ci.org/mihaibivol/sunday-funday)
 
 # first steps
 
