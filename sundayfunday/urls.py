@@ -18,6 +18,8 @@ from django.contrib import admin
 
 from sundayfunday.views import index
 
+#admin.autodiscover()
+
 urlpatterns = [
     url(r'^$', index.IndexView.as_view()),
     url(r'^admin/', admin.site.urls),
