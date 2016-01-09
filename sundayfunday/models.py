@@ -13,7 +13,7 @@ class User(auth_models.AbstractUser):
     )
 
     user_type = models.IntegerField(choices=TYPES, default=USER)
-    preferences = models.ManyToManyField('Preferences', blank=True) 
+    preferences = models.ManyToManyField('Preferences', blank=True)
 
     @property
     def name(self):
@@ -36,6 +36,6 @@ class Preferences(models.Model):
     """ default preferences"""
 
     name = models.CharField(max_length=30)
- 
+
     def __str__(self):
         return self.name
