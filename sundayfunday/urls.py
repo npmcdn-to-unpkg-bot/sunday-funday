@@ -19,6 +19,7 @@ from django.contrib import admin
 from sundayfunday.views import index
 from sundayfunday.views import user
 from sundayfunday.views import register
+from sundayfunday.views import addevent
 
 #admin.autodiscover()
 
@@ -27,5 +28,6 @@ urlpatterns = [
     url(r'^login/$', user.LoginView.as_view()),
     url(r'^logout/$', user.LogoutView.as_view()),
     url(r'^register/', register.RegisterUserView.as_view(), name='register'),
+    url(r'^addevent/', addevent.AddEventView.as_view(), name='addevent'),
     url(r'^admin/', admin.site.urls),
 ]
