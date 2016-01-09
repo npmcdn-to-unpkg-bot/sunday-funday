@@ -26,6 +26,6 @@ urlpatterns = [
     url(r'^$', index.IndexView.as_view()),
     url(r'^login/$', user.LoginView.as_view()),
     url(r'^logout/$', user.LogoutView.as_view()),
-    url(r'^register/', register.RegisterUserView.as_view()),
+    url(r'^register/', register.RegisterUserView.as_view(), name='register'),
     url(r'^admin/', admin.site.urls),
 ]
