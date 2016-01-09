@@ -5,7 +5,7 @@ class User(auth_models.User):
     """User that can login/logout + his type."""
     TYPES = (
         (1, 'USER'),
-        (2, 'ORGANIZER'),
+        (2, 'ORGANISER'),
         # TODO Add Admin if needed
     )
 
