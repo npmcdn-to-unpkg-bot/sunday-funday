@@ -45,7 +45,7 @@ class AttendEvent(models.Model):
 class Preference(models.Model):
     """ default preferences"""
 
-    name = models.CharField(max_length=30)
+    name = models.CharField(max_length=30, primary_key=True)
 
     def __str__(self):
         return self.name
