@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>{% block title %}My amazing site{% endblock %}</title>
-</head>
+	<head>
+	    <title>{% block title %}My amazing site{% endblock %}</title>
+	</head>
 
-<body>
-<h1> Sunday Funday </h1>
+	<body>
+		<h1> Sunday Funday </h1>
 
-{% block content %}
-{% endblock %}
+		{% block content %}
+		{% endblock %}
 
-<h3> Here goes a generic footer </h3>
-</body>
+		<h3> Here goes a generic footer </h3>
+
+	    <!-- Bootstrap core JavaScript
+	    ================================================== -->
+	    <!-- Placed at the end of the document so the pages load faster -->
+	    <script src="./../bootstrap/js/jquery.min.js"></script>
+	    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+	    <script src="./../bootstrap/js/bootstrap.min.js"></script>
+	    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	    <script src="./../bootstrap/js/ie10-viewport-bug-workaround.js"></script>
+
+	</body>
+</html>
