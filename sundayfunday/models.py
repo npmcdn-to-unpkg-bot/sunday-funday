@@ -32,6 +32,16 @@ class Event(models.Model):
     def __str__(self):
         return self.title
 
+class AttendEvent(models.Model):
+    """ attend event"""
+
+    user = models.ForeignKey('User')
+    event = models.ForeignKey('Event')
+    data = models.DateTimeField()
+
+    def __str__(self):
+        return "%s" % self.id
+
 class Preference(models.Model):
     """ default preferences"""
 
@@ -65,6 +75,7 @@ class Grade(models.Model):
         (5, "EXCELLENT"),
     )
     grade = models.IntegerField(choices=TYPES, default=5)
+    date = models.DateTimeField(null=True)
 
     def __str__(self):
         return "%s" % self.id
