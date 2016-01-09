@@ -1,2 +1,15 @@
 # sunday-funday
 SVV Project
+
+# first steps
+
+```
+git clone this
+virtualenv sandbox
+source sandbox/bin/activate
+pip install -r requirements.txt
+```
+
+We might need these packages
+* python-dev
+
