@@ -48,6 +48,19 @@ Please migrate the initial fixtures
 ./manage.py dumpdata --format json > fixtures/initial.json
 ```
 
+If shit hits the fan
+
+```
+rm -r sundayfunday/migrations/
+rm db.sqlite3
+./manage.py makemigrations
+./manage.py migrate
+# Add by hand any other fixtures
+./manage.py dumpdata --format json > fixtures/initial.json
+```
+
+Don't forget to commit migrations
+
 # things to know
 
 * all users should have as password `sundayfunday`
