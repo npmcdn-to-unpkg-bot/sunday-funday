@@ -32,4 +32,5 @@ urlpatterns = [
     url(r'^event/(?P<pk>[0-9]+)/$', event.EventDetailView.as_view(),
         name='event-detail'),
     url(r'^admin/', admin.site.urls),
+    url(r'^u/$', index.UserHomePageView.as_view(), name='user-homepage')
 ]
