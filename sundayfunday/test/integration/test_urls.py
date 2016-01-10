@@ -53,6 +53,7 @@ class TestLoginLogout(test.TestCase):
     def tearDown(self):
         self.user.delete()
 
+
 class TestRegistration(test.TestCase):
 
     def setUp(self):
@@ -101,5 +102,3 @@ class TestRegistration(test.TestCase):
         self.assertEqual(1, models.User.objects.all().count())
         self.assertEqual('user', models.User.objects.all()[0].username)
         models.User.objects.all().delete()
-
-
