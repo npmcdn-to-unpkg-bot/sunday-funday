@@ -1,6 +1,9 @@
 # sunday-funday
-SVV Project
+
 [![Build Status](https://travis-ci.org/mihaibivol/sunday-funday.svg)](https://travis-ci.org/mihaibivol/sunday-funday)
+[![codecov.io](https://codecov.io/github/mihaibivol/sunday-funday/coverage.svg?branch=master)](https://codecov.io/github/mihaibivol/sunday-funday?branch=master)
+
+SVV Project with events and cool stuff. Stay tuned!
 
 # first steps
 
