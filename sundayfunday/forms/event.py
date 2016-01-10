@@ -1,6 +1,7 @@
-from sundayfunday.models import Event
 from django.forms import ModelForm
 from django import forms
+
+from sundayfunday.models import Event
 
 class AddEventForm(ModelForm):
     class Meta:
