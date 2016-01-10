@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% for event in events %}
+  <div class="inner cover">
+    <h1 class="cover-heading"> {{ event.title }} </h1>
+    <p class="lead"> {{ event.description }} </p>
+  </div>
+  {% endfor %}
+{% endblock %}
