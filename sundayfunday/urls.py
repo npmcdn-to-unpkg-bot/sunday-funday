@@ -35,6 +35,8 @@ urlpatterns = [
         name='user-edit'),
     url(r'^edit-event/(?P<pk>[0-9]+)/$', event.EventEditView.as_view(),
         name='edit-event'),
+    url(r'^see-upcoming/(?P<pk>[0-9]+)/$', event.SeeUpcomingEventsView.as_view(),
+        name='see-upcoming'),
     url(r'^admin/', admin.site.urls),
     url(r'^u/$', index.UserHomePageView.as_view(), name='user-homepage')
 ]

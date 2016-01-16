@@ -34,6 +34,7 @@
 	                  <li class="active"><a href="/">Home</a></li>
                       {% if request.user.is_authenticated %}
                       <li><a href="{% url 'user-edit' request.user.id %}">{{request.user.name}}</a></li>
+                      <li><a href="{% url 'see-upcoming' request.user.id %}">Upcoming events</a></li>
                       {% if request.user.user_type == 2 %}
                       <li><a href="{% url 'addevent' %}">Add Event</a></li>
                       {% endif %}

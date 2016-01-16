@@ -1,7 +1,9 @@
 from django.views.generic import CreateView
 from django.views.generic import DetailView
 from django.views.generic import UpdateView
+from django.views.generic import View
 from django.http import HttpResponse
+from django.shortcuts import render
 
 from sundayfunday.forms.event import AddEventForm
 from sundayfunday.forms.event import UpdateEventForm
@@ -51,3 +53,10 @@ class EventEditView(UpdateView):
     model = Event
     success_url = '/'
     template_name = 'eventedit.html'
+
+class SeeUpcomingEventsView(View):
+    def get(self, request, *args, **kwargs):
+        attended_events = AttendEvent.objects.filter(user__id=request.user.id)
+        attended_events = map(lambda x: x.event, attended_events)
+        return render(request, 'upcoming-events.html',
+                context={'events': attended_events})
