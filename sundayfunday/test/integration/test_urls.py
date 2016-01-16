@@ -9,7 +9,7 @@ class TestIndex(test.TestCase):
 
     def test_index(self):
         c = test.Client()
-        response = c.get('/')
+        response = c.get('/', follow=True)
         self.assertEqual(response.status_code, httplib.OK)
 
 
