@@ -3,7 +3,7 @@
 {% block content %}
   {% for event in events %}
   <div class="inner cover">
-    <h1 class="cover-heading"> {{ event.title }} </h1>
+    <h1 class="cover-heading"> <a href = "{% url 'event-detail' event.id %}"> {{ event.title }} </a> </h1>
     <p class="lead"> {{ event.description }} </p>
   </div>
   {% endfor %}
