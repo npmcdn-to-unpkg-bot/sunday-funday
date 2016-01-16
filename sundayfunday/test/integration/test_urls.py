@@ -102,3 +102,48 @@ class TestRegistration(test.TestCase):
         self.assertEqual(1, models.User.objects.all().count())
         self.assertEqual('user', models.User.objects.all()[0].username)
         models.User.objects.all().delete()
+
+class TestAddEvent(test.TestCase):
+    def setUp(self):
+        self.c = test.Client()
+        self.user = models.User(username='user')
+        self.user.set_password('password')
+        self.user.save()
+        self.c = test.Client()
+
+    def login(self):
+        response = self.c.post('/login/', {'username': 'user',
+                                           'password': 'password'},
+                               follow=True)
+
+    def add_preference(self):
+        models.Preference(name='climbing').save()
+
+    def test_succesful_addevent(self):
+        self.login();
+        self.add_preference();
+        response = self.c.post('/addevent/', {'title': 'title',
+                                 'description': 'description',
+                                 'preference': 'climbing',
+                                 }, follow=True)
+        self.assertEqual(response.status_code, httplib.OK)
+        self.assertEqual(1, models.Event.objects.all().count())
+        self.assertEqual('title', models.Event.objects.all()[0].title)
+        models.Event.objects.all().delete()
+
+    def test_nopreference_addevent(self):
+        self.login();
+        response = self.c.post('/addevent/', {'title': 'title',
+                                 'description': 'description',
+                                 'preference': 'climbing',
+                                 }, follow=True)
+        self.assertEqual(response.status_code, httplib.OK)
+        self.assertEqual(0, models.Event.objects.all().count())
+
+    def test_nouser_addevent(self):
+        response = self.c.post('/addevent/', {'title': 'title',
+                                 'description': 'description',
+                                 'preference': 'climbing',
+                                 }, follow=True)
+        self.assertEqual(response.status_code, httplib.OK)
+        self.assertEqual(0, models.Event.objects.all().count())
