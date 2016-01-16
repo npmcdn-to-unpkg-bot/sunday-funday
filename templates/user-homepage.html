@@ -7,4 +7,19 @@
     <p class="lead"> {{ event.description }} </p>
   </div>
   {% endfor %}
+  <div class="CEVA CE-L PUNE IN STANGA SUS">
+    <form method="GET" action="{% url 'user-homepage' %}">
+      <label>Event name:</label>
+      <input name="event_name" class="form-control" value="{{event_name_prefill}}" type="text"/>
+      <select multiple="multiple" class="form-control" id="id_preference" name="preference">
+        {% for preference in preferences %}
+        <option value="{{ preference.name }}" {% if preference.name in selected_preferences %} selected {% endif %}>
+          {{ preference.name }}
+        </option>
+        {% endfor %}
+      </select>
+      <input type="submit" class="form-control" value="Filter" />
+    </form>
+  </div>
+
 {% endblock %}
