@@ -17,12 +17,12 @@ class UserHomePageView(generic.View):
 
         preferences = Preference.objects.all()
         pref = request.GET.getlist("preference", None)
-        event_name = request.GET.get("event_name", None)
+        event_name = request.GET.get("event_name", "")
         relevant_events = Event.objects.all().distinct()
 
         if pref:
             relevant_events = relevant_events.filter(preference__name__in=pref).distinct()
-        if event_name:
+        if not event_name == "":
             relevant_events = relevant_events.filter(title__contains=event_name).distinct()
 
         return render(request, 'user-homepage.html',
