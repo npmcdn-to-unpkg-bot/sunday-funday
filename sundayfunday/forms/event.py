@@ -24,3 +24,13 @@ class FilterEventForm(ModelForm):
         super(ModelForm, self).__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs.update({'class': 'form-control'})
+
+class UpdateEventForm(ModelForm):
+    class Meta:
+        model = Event
+        fields = ('title', 'description', 'preference')
+
+    def __init__(self, *args, **kwargs):
+        super(ModelForm, self).__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].widget.attrs.update({'class': 'form-control'})

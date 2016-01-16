@@ -4,6 +4,7 @@
   {% for event in events %}
   <div class="inner cover">
     <h1 class="cover-heading"> <a href = "{% url 'event-detail' event.id %}"> {{ event.title }} </a> </h1>
+    <input type="button" onClick=location.href="{% url 'edit-event' event.id %}" value="Edit"/>
     <p class="lead"> {{ event.description }} </p>
   </div>
   {% endfor %}
