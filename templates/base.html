@@ -33,14 +33,14 @@
 	                <ul class="nav masthead-nav">
 	                  <li class="active"><a href="/">Home</a></li>
                       {% if request.user.is_authenticated %}
-                      <li><a href="/edit/">{{request.user.name}}</a></li>
+                      <li><a href="{% url 'user-edit' request.user.id %}">{{request.user.name}}</a></li>
                       {% if request.user.user_type == 2 %}
-                        <li><a href="/addevent/">Add Event</a></li>
+                      <li><a href="{% url 'addevent' %}">Add Event</a></li>
                       {% endif %}
-	                  <li><a href="/logout/">Log Out</a></li>
+                      <li><a href="{% url 'logout' %}">Log Out</a></li>
                       {% else %}
-	                  <li><a href="/register/">Register</a></li>
-	                  <li><a href="/login/">Log In</a></li>
+                      <li><a href="{% url 'register' %}">Register</a></li>
+                      <li><a href="{% url 'login' %}">Log In</a></li>
                       {% endif %}
 	                </ul>
 	              </nav>

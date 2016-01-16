@@ -24,13 +24,15 @@ from sundayfunday.views import event
 #admin.autodiscover()
 
 urlpatterns = [
-    url(r'^$', index.UserHomePageView.as_view()),
-    url(r'^login/$', user.LoginView.as_view()),
-    url(r'^logout/$', user.LogoutView.as_view()),
+    url(r'^$', index.UserHomePageView.as_view(), name='home'),
+    url(r'^login/$', user.LoginView.as_view(), name='login'),
+    url(r'^logout/$', user.LogoutView.as_view(), name='logout'),
     url(r'^register/', register.RegisterUserView.as_view(), name='register'),
     url(r'^addevent/', event.AddEventView.as_view(), name='addevent'),
     url(r'^event/(?P<pk>[0-9]+)/$', event.EventDetailView.as_view(),
         name='event-detail'),
+    url(r'^edit/(?P<pk>[0-9]+)/$', user.UserEditView.as_view(),
+        name='user-edit'),
     url(r'^admin/', admin.site.urls),
     url(r'^u/$', index.UserHomePageView.as_view(), name='user-homepage')
 ]

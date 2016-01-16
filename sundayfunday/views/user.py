@@ -6,6 +6,9 @@ from django import shortcuts
 from django.contrib import auth
 from django.views import generic
 
+from sundayfunday.forms.register import UpdateUserForm
+from sundayfunday.models import User
+
 class LoginView(generic.TemplateView):
     template_name = 'login.html'
 
@@ -34,3 +37,8 @@ class LogoutView(generic.View):
         auth.logout(request)
         return shortcuts.redirect('/')
 
+class UserEditView(generic.UpdateView):
+    form_class = UpdateUserForm
+    model = User
+    success_url = '/'
+    template_name = 'useredit.html'
