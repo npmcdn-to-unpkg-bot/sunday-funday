@@ -51,6 +51,7 @@ body {
 .cover-container {
   margin-right: auto;
   margin-left: auto;
+  width: 80%;
 }
 
 /* Padding for spacing */
@@ -158,6 +159,22 @@ body {
   .masthead,
   .mastfoot,
   .cover-container {
-    width: 700px;
+    width: 80%;
   }
 }
+
+.lead {
+  max-width: 314px;
+}
+
+.event-grid {
+  width: 90%;
+  margin-left:5%;
+}
+/* event grid */
+.event-grid-item {
+  border: 2px solid hsla(0, 0%, 0%, 0.5);
+  margin-bottom: 5px;
+}
+
+.grid-sizer { width: 20%; }
