@@ -3,6 +3,7 @@
 import httplib
 
 from django import shortcuts
+from django import http
 from django.contrib import auth
 from django.views import generic
 
@@ -38,8 +39,16 @@ class LogoutView(generic.View):
         auth.logout(request)
         return shortcuts.redirect('/')
 
+
 class UserEditView(generic.UpdateView):
     form_class = UpdateUserForm
     model = User
     success_url = '/'
     template_name = 'useredit.html'
+
+    def dispatch(self, request, pk, *args, **kwargs):
+        # Check string of db not int(user_input) because that my raise errors.
+        if pk != str(request.user.pk):
+            return http.HttpResponseForbidden('Go edit yourself')
+        return super(UserEditView, self).dispatch(request, pk, *args, **kwargs)
+
