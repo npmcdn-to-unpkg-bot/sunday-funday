@@ -12,13 +12,33 @@ class User(auth_models.AbstractUser):
         # TODO Add Admin if needed
     )
 
+
+    VALID_SUBSCRIBTION = 1
+    EXPIRED_SUBSCRIBTION = 2
+    FREE_TRIAL = 3
+
+    SUBSCRIBTION_TYPES = (
+        (VALID_SUBSCRIBTION, 'VALID'),
+        (EXPIRED_SUBSCRIBTION, 'INVALID'),
+        (FREE_TRIAL, 'FREE_TRIAL')
+    )
+
     user_type = models.IntegerField(choices=TYPES, default=USER)
     preference = models.ManyToManyField('Preference', blank=True)
+    subscribtion_status = models.IntegerField(choices=SUBSCRIBTION_TYPES,
+                                              default=FREE_TRIAL)
 
     @property
     def name(self):
         return ' '.join([self.first_name.capitalize(),
                          self.last_name.capitalize()])
+
+    @property
+    def valid_organiser(self):
+        if self.user_type != self.ORGANISER:
+            return False
+        return self.subscribtion_status in [self.VALID_SUBSCRIBTION,
+                                            self.FREE_TRIAL]
 
 
 class Event(models.Model):
