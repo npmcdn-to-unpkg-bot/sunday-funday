@@ -15,11 +15,12 @@ class LoginView(generic.TemplateView):
     def post(self, request):
         username = request.POST['username']
         password = request.POST['password']
+        next_url = request.GET.get('next', '/')
         user = auth.authenticate(username=username, password=password)
         if user is not None:
             if user.is_active:
                 auth.login(request, user)
-                return shortcuts.redirect('/')
+                return shortcuts.redirect(next_url)
             else:
                 return shortcuts.render(
                         request, self.template_name,
