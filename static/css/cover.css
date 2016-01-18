@@ -178,4 +178,15 @@ body {
   margin-bottom: 5px;
 }
 
+.super-form {
+  margin-top: 200px;
+}
+
 .grid-sizer { width: 5%; }
+
+.masthead {
+  background-color: #333;
+  z-index: 10;
+  border-radius: 5px;
+  border: 2px solid #333;
+}
