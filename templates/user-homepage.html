@@ -12,16 +12,16 @@ function postData(url, toggleValue, userId) {
 </script>
 <div class="CEVA CE-L PUNE IN STANGA SUS">
     <form method="GET" action="{% url 'user-homepage' %}">
-      <label>Event name:</label>
-      <input name="event_name" class="form-control" value="{{event_name_prefill}}" type="text"/>
-      <select multiple="multiple" class="form-control" id="id_preference" name="preference">
+      <label style="margin-right: 100px;">Event name:</label>
+      <input name="event_name" class="form-control" style="display:inline-block; width:85%;" value="{{event_name_prefill}}" type="text"/>
+      <select multiple="multiple" class="form-control" id="id_preference" name="preference" style="margin-top: 10px; height: 100px;">
         {% for preference in preferences %}
-        <option value="{{ preference.name }}" {% if preference.name in selected_preferences %} selected {% endif %}>
+        <b><option value="{{ preference.name }}" class="bg-success" style="text-align: center; text-transform: uppercase; width: 33%; height: 33%; float: left; vertical-align: middle;" {% if preference.name in selected_preferences %} selected {% endif %}>
           {{ preference.name }}
         </option>
         {% endfor %}
       </select>
-      <input type="submit" class="form-control" value="Filter" />
+      <input type="submit" class="btn btn-default btn-lg btn-block" style="margin-top: 10px;" value="Filter" />
     </form>
   </div>
 
