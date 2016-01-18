@@ -10,11 +10,11 @@ function postData(url, toggleValue, userId) {
       });
 }
 </script>
-<div class="super-form"
+<div class="super-form">
     <form method="GET" action="{% url 'user-homepage' %}">
       <label style="margin-right: 100px;">Event name:</label>
       <input name="event_name" class="form-control" style="display:inline-block; width:40%;" value="{{event_name_prefill}}" type="text"/>
-      <input type="submit" class="btn btn-default btn-lg" style="display:inline-block;" value="Filter" />
+      <input type="submit" class="btn btn-default" style="display:inline-block;" value="Filter" />
       <select multiple="multiple" class="form-control" id="id_preference" name="preference" style="margin-top: 10px; height: 100px;">
         {% for preference in preferences %}
         <b><option value="{{ preference.name }}" class="bg-success" style="text-align: center; text-transform: uppercase; width: 33%; height: 33%; float: left; vertical-align: middle;" {% if preference.name in selected_preferences %} selected {% endif %}>
